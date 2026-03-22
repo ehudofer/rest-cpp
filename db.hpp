@@ -12,6 +12,7 @@ struct User {
     int id;
     std::string name;
     std::string email;
+    std::string username;
     std::string password;
     json assets;
 };
@@ -31,6 +32,7 @@ public:
         _db_data["users"][idx]["id"].get<int>(),
         _db_data["users"][idx]["name"].get<std::string>(),
         _db_data["users"][idx]["email"].get<std::string>(),
+        _db_data["users"][idx]["username"].get<std::string>(),
         _db_data["users"][idx]["password"].get<std::string>(),
         _db_data["users"][idx]["assets"]
         };

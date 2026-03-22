@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 
     std::vector<User> users = db.getUsers();
     for (const auto& user : users) {
-        std::cout << "User ID: " << user.id << ", Name: " << user.name << ", Email: " << user.email << std::endl;
+        std::cout << "User ID: " << user.id << ", Name: " << user.name <<  ", Email: " << user.email << ", Username: " << user.username << std::endl;
     }
 
     svr.Get("/js/:", [](const httplib::Request& req, httplib::Response& res) {
@@ -89,6 +89,43 @@ int main(int argc, char* argv[]) {
     //     int sum = 0;
     //     res.set_content(body, "text/plain");
     // });
+    svr.Post("/api/login", [&](const httplib::Request& req, httplib::Response& res) {
+        std::string route = req.path;
+        bool success = false;
+        json response_json;
+        std::cout << "POST " << route << std::endl;
+        std::cout << "Request body: " << req.body << std::endl;
+        try {
+            json request_json = json::parse(req.body);
+            std::string username = request_json["username"];
+            std::string password = request_json["password"];
+            std::vector<User> users = db.getUsers();
+            for (const auto& user : users) {
+                if (user.username == username && user.password == password) {
+                    success = true;
+                    response_json["id"] = user.id;
+                    response_json["name"] = user.name;
+                    response_json["email"] = user.email;
+                    response_json["username"] = user.username;
+                    response_json["assets"] = user.assets;
+                    break;
+                }
+            }
+        } catch (const std::exception& e) {
+            std::cerr << "Error parsing JSON: " << e.what() << std::endl;
+            response_json["error"] = "Invalid JSON format";
+            success = false;
+        }
+        if(success) {
+            response_json["message"] = "Login successful";
+            response_json["success"] = true;
+        } else {
+            response_json["message"] = "Invalid username or password";
+            response_json["success"] = false;
+
+        }
+        res.set_content(response_json.dump(), "application/json");
+    });
     svr.Get("/api/:", [&](const httplib::Request& req, httplib::Response& res) {
         std::string route = req.path;
         // std::cout << "GET " << route << std::endl;

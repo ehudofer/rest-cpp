@@ -24,6 +24,7 @@ std::vector<User> DB::getUsers() {
         user.id = item["id"].get<int>();
         user.name = item["name"].get<std::string>();
         user.email = item["email"].get<std::string>();
+        user.username = item["username"].get<std::string>();
         user.password = item["password"].get<std::string>();
         user.assets = item["assets"];
         users.push_back(user);

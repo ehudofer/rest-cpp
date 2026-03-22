@@ -18,6 +18,8 @@ export function render(state) {
   }
 });
 
+var login_username = '';
+var login_password = '';
 
   if (!state.user) {
     app.innerHTML = `<div class="card login-card">
@@ -29,6 +31,7 @@ export function render(state) {
       id="username"
       placeholder="Username"
       autocomplete="username"
+      value="${login_username}"
       required
     />
 
@@ -37,17 +40,21 @@ export function render(state) {
       id="password"
       placeholder="Password"
       autocomplete="current-password"
+      value="${login_password}"
       required
     />
 
     <button type="submit">Sign in</button>
   </form>
 </div>`;
+document.getElementById('username').addEventListener('', e => login_username = e.target.value);
+document.getElementById('password').addEventListener('input', e => login_password = e.target.value);
     return;
   }
 
   app.innerHTML = `
     <h1>Hello ${state.user.name}</h1>
+    <p>Username: ${state.user.username}</p>
     <pre>${JSON.stringify(state.data, null, 2)}</pre>
   `;
 }

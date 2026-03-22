@@ -4,6 +4,7 @@
         {
             "id": 1,
             "email": "test@example.com",
+            "username": "testuser",
             "password": "12345678",
             "name": "Test User",
             "changed_timestamp": "2024-06-01T12:00:00Z",
@@ -51,6 +52,7 @@
         {
             "id": 2,
             "email": "test2@example.com",
+            "username": "testuser2",
             "password": "87654321",
             "name": "Test User 2",
             "changed_timestamp": "2024-06-01T12:00:00Z",

@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "name": "html",
+            "path": "html"
+        },
+        {
+            "name": "src",
+            "path": "."
+        }
+    ]
+}

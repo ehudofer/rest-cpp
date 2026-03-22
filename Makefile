@@ -1,19 +1,23 @@
+OBJDIR = obj
 CXX = clang++
 CXXFLAGS ?= -std=c++17 -Wall -Wextra -O2 -g
 LDFLAGS = 
 SRC = $(wildcard *.cpp)
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:%.cpp=$(OBJDIR)/%.o)
 TARGET = main
 
-all: $(TARGET)
+all: $(OBJDIR) $(TARGET)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp
+$(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(OBJDIR) $(TARGET)
 
 .PHONY: all clean

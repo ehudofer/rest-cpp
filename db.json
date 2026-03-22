@@ -1,0 +1,98 @@
+{
+    "version": "0.0.1b",
+    "users": [
+        {
+            "id": 1,
+            "email": "test@example.com",
+            "password": "12345678",
+            "name": "Test User",
+            "changed_timestamp": "2024-06-01T12:00:00Z",
+            "last_login_timestamp": "2024-06-01T12:00:00Z",
+            "assets": [
+                {
+                    "version": "0.0.1b",
+                    "type": "points",
+                    "data_type": "bignumber",
+                    "data": {
+                        "value": 2.4,
+                        "exp": 10
+                    },
+                    "mutable": true,
+                    "changed": "2024-06-01T12:00:00Z"
+                },
+                {
+                    "version": "0.0.1b",
+                    "type": "reset",
+                    "data_type": "reset",
+                    "data": {
+                        "reset_no": 1,
+                        "reset_factor": 2.5,
+                        "reset_time": "2024-06-01T12:00:00Z"
+                    },
+                    "mutable": false,
+                    "created": "2024-06-01T12:00:00Z"
+                },
+                {
+                    "version": "0.0.1b",
+                    "type": "achievement",
+                    "data_type": "achievement",
+                    "data": {
+                        "achievement_id": 1,
+                        "achievement_name": "First Achievement",
+                        "achievement_description": "This is the first achievement.",
+                        "achieved_timestamp": "2024-06-01T12:00:00Z"
+                    },
+                    "mutable": false,
+                    "created": "2024-06-01T12:00:00Z"
+                }
+            ]
+            
+        },
+        {
+            "id": 2,
+            "email": "test2@example.com",
+            "password": "87654321",
+            "name": "Test User 2",
+            "changed_timestamp": "2024-06-01T12:00:00Z",
+            "last_login_timestamp": "2024-06-01T12:00:00Z",
+            "assets": [
+                {
+                    "version": "0.0.1b",
+                    "type": "points",
+                    "data_type": "bignumber",
+                    "data": {
+                        "value": 3.4,
+                        "exp": 10
+                    },
+                    "mutable": true,
+                    "changed": "2024-06-01T12:00:00Z"
+                }
+            ]
+        }
+    ],
+    "available_assets": [
+        {
+            "version": "0.0.1b",
+            "type": "points",
+            "data_type": "bignumber",
+            "mutable": true
+        },
+        {
+            "version": "0.0.1b",
+            "type": "reset",
+            "data_type": "reset",
+            "mutable": false
+        },
+        {
+            "version": "0.0.1b",
+            "type": "achievement",
+            "data_type": "achievement",
+            "data": {
+                "achievement_id": 1,
+                "achievement_name": "First Achievement",
+                "achievement_description": "This is the first achievement."
+            },
+            "mutable": false
+        }
+    ]
+}
